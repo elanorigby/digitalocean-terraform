@@ -12,6 +12,7 @@ resource "digitalocean_droplet" "haproxy-web" {
         type = "ssh"
         private_key = "${file(var.pvt_key)}"
         timeout = "2m"
+        host = "${digitalocean_droplet.haproxy-web.ipv4_address}"
     }
     provisioner "remote-exec" {
         inline = [
